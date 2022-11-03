@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import Playground from './components/Playground'
 
 /*
 💥💥💥 Rules when DECLARING a React component 💥💥💥
@@ -20,16 +21,21 @@ import { render } from 'react-dom'
   - Instead of passing args with parens, we pass them with attribute-like syntax
   - Don't forget all tags need to close correctly
 */
-
+//we have MANY of these
 function App(props) {
+  const {cohort, instractor, happy, week} = props
   return (
     <div className='container'>
-      <h1>Welcome to React, Web {props.cohort}</h1>
+      <h1>Welcome to React, Web {cohort}</h1>
+      <div>{instractor} welcomes you!</div>
+      {happy ? <div>Very happy</div> : <div>It is Monday</div>}
+      <div> It is week {week}</div>
+      <Playground cohort={cohort}/> 
     </div>
   )
 }
-
+//only once per app, usually 
 render(
-  <App cohort='37' />,
+  <App cohort='37' instractor='Gabe' happy={false} week={2}/>,
   document.querySelector('#root')
 )
